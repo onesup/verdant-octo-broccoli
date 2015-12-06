@@ -1,0 +1,2 @@
+# pidfile setting in this file seems overwritten by 'set :sidekiq_pid' in Capistrano settings file.
+:pidfile: tmp/pids/sidekiq.pid
