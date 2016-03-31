@@ -20,3 +20,4 @@
 .env.local
 .env.staging
 .env.production
+.env.development
