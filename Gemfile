@@ -13,6 +13,9 @@ gem 'sidekiq'
 gem 'whenever'
 gem 'dotenv-rails'
 gem 'unicorn'
+gem 'carrierwave'
+gem 'roo'
+# gem 'roo-xls'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
