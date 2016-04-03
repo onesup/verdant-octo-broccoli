@@ -1,11 +1,14 @@
 class Sheet < ActiveRecord::Base
   mount_uploader :sheet, SheetUploader
+  attr_accessor :workbook
+
+  def workbook
+    Roo::Spreadsheet.open(sheet)
+  end
 
   def build_users_from_sheet
-    workbook = Roo::Spreadsheet.open(sheet)
     workbook.default_sheet = workbook.sheets.first
     headers = Hash.new
-    header_row = 2
     workbook.row(header_row).each_with_index do |header,i|
       headers[header.strip] = i
     end
@@ -17,6 +20,13 @@ class Sheet < ActiveRecord::Base
         user.phone = phone
         user.name = name
       end
+    end
+  end
+
+  def header_row
+    Phonelib.default_country = "KR"
+    (workbook.first_row..workbook.last_row).each do |row|
+      return row - 1 if workbook.row(row).map{ |r| Phonelib.parse(r).valid? }.include?(true)
     end
   end
 end
