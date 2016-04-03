@@ -39,3 +39,13 @@ group :development do
   gem 'zeus'
 end
 
+group :test do
+  gem 'minitest'
+  gem 'minitest-stub_any_instance'
+  gem 'minitest-reporters'
+  gem 'capybara'
+  gem 'capybara_minitest_spec'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'ruby-prof'
+end
