@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
     file = params[:user][:list].tempfile.path
     begin
-      list = Roo::Spreadsheet.open(file)
+      list = User.build_users_from_sheet(file)
     rescue Exception => e
       flash[:error] = "사용자 정보 파일 업로드 실패: #{e}"
       redirect_to :back and return
