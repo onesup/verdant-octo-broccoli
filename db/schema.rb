@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403151017) do
+ActiveRecord::Schema.define(version: 20160408180724) do
+
+  create_table "holidays", force: :cascade do |t|
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.string   "name",             limit: 255
+    t.string   "type",             limit: 255
+    t.integer  "holidayable_id",   limit: 4
+    t.string   "holidayable_type", limit: 255
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "holidays", ["holidayable_type", "holidayable_id"], name: "index_holidays_on_holidayable_type_and_holidayable_id", using: :btree
 
   create_table "sheets", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
