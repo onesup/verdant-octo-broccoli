@@ -1,5 +1,6 @@
 class Group < ActiveRecord::Base
   has_many :children, class_name: "Group", foreign_key: "mother_id"
+  has_many :users
   belongs_to :mother, class_name: "Group"
   before_create :default_nation
 

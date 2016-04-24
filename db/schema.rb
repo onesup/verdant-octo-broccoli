@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416173614) do
+ActiveRecord::Schema.define(version: 20160424143417) do
 
   create_table "groups", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -49,6 +49,9 @@ ActiveRecord::Schema.define(version: 20160416173614) do
     t.string   "phone",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "group_id",   limit: 4
   end
+
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
 
 end
