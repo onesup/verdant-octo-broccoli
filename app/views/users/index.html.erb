@@ -1,4 +1,13 @@
-<%= form_for :user, url: users_path, method: :post, html: { multipart: true } do |f| %>
+<%= form_for :users, url: users_path, method: :post, html: { multipart: true } do |f| %>
   <%= f.file_field :list %>
   <%= f.submit '업로드' %>
 <% end %>
+<table>
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.phone %></td>
+    <td><%= user.email %></td>
+  </tr>
+<% end %>
+</table>
