@@ -1,0 +1,12 @@
+<%= form_for :holidays, url: holidays_path, method: :post, html: { multipart: true } do |f| %>
+  <%= f.file_field :list %>
+  <%= f.submit '업로드' %>
+<% end %>
+<table>
+<% @holidays.each do |holiday| %>
+  <tr>
+    <td><%= holiday.name %></td>
+    <td><%= holiday.started_at %></td>
+  </tr>
+<% end %>
+</table>
