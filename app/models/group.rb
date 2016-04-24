@@ -3,6 +3,7 @@ class Group < ActiveRecord::Base
   has_many :users
   belongs_to :mother, class_name: "Group"
   before_create :default_nation
+  has_many :holidays, as: :holidayable
 
   private
 

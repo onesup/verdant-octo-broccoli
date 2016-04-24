@@ -9,4 +9,17 @@ describe Holiday do
     holiday.holidayable = user
     holiday.holidayable.name.must_equal user.name
   end
+
+  it 'Business day 계산' do
+    user = create(:user)
+    group = create(:group)
+    user.group = group
+    user.save
+    teachers_day = GroupHoliday.new(name: '교사의 날', date: Time.parse('2016-05-15'))
+    group.holidays << teachers_day
+    long_holiday = Time.parse('2016-05-01')
+    requested_holiday = Holiday.new(started_at: long_holiday, finished_at: long_holiday + 21.days)
+    user.holidays << requested_holiday
+    requested_holiday.actual_vacation_days.must_equal 21.days
+  end
 end

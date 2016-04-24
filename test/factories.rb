@@ -11,4 +11,14 @@ FactoryGirl.define do
       sheet { Rack::Test::UploadedFile.new(file_path + file_name) }
     end
   end
+
+  factory :user do
+    name '린드블럼'
+    email 'Lindblom@email.com'
+    phone '010-8888-8888'
+  end
+
+  factory :group do
+    name '야구단'
+  end
 end
