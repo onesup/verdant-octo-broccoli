@@ -22,4 +22,11 @@ describe Holiday do
     user.holidays << requested_holiday
     requested_holiday.actual_vacation_days.must_equal 21.days
   end
+
+  it '휴일 판별' do
+    birthday = Time.parse('2016-05-08')
+    birthday.holiday?.must_equal false
+    NationalHoliday.create(name: '원섭생일', date: birthday)
+    birthday.holiday?.must_equal true
+  end
 end

@@ -6,6 +6,10 @@ class Holiday < ActiveRecord::Base
     self.finished_at = the_date.end_of_day
   end
 
+  def date
+    self.started_at.to_date
+  end
+
   def actual_vacation_days
     finished_at - started_at
   end
